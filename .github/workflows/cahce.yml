@@ -32,7 +32,7 @@ jobs:
       - name: Verify cache
         run: |
           echo "Hit status -> ${{ steps.demo-cache.outputs.cache-hit }}"    
-          demo-cache/time.txt    
+          cat demo-cache/time.txt    
           
       
       
