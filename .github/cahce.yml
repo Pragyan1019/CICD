@@ -1,0 +1,41 @@
+name: Caching learnings
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  caching:
+    name: Demo-caching
+    runs-on: ubuntu-24,
+    steps:
+      - name: Restore cache
+        id: demo-cache
+        uses: actions/cache@v5
+        with:
+          path: demo-cache/
+          key: looking-for-internship 
+
+      - name: Create cache
+        if: steps.demo-cache.outputs.cache-hit  != 'true'
+        run: |
+          echo "Creating a cache"
+          mkdir -p demo-cache
+          date > demo-cache/time.txt
+
+      - name: Save cache
+        if: steps.demo-cache.outputs.cache-hit !='true'
+        id: demo-cache
+        uses: actions/cache@v5
+        with:
+          path: demo-cache/
+          key: looking-for-internship
+
+      - name: Verify cache
+        run: |
+          echo "Hit status -> ${{ steps.demo-cache.outputs.cache-hit }}"    
+          demo-cache/time.txt    
+          
+      
+      
+
+
