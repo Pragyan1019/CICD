@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@130a169078a413d3a5246a393625e8e742f387f6
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
-      - with:
+        with:
           node-version: 20
           cache: npm
           cache-dependency-path: cache/node-project 
