@@ -18,9 +18,9 @@ jobs:
           cache: npm
           cache-dependency-path: cache/node-project 
       - name: Install npm dependecies
-        runs: npm ci --prefer=offline 
+        run: npm ci --prefer=offline 
       - name: List few modules
-        runs: ls -R node_modules | head  
+        run: ls -R node_modules | head  
 
 
 
