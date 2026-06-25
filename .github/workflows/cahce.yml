@@ -4,6 +4,29 @@ on:
   workflow_dispatch:
 
 jobs:
+  node-js:
+    name: setup node js
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: cache/node-project
+    steps:
+      - uses: actions/checkout@130a169078a413d3a5246a393625e8e742f387f6
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
+      - with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: cache/node-project 
+      - name: Install npm dependecies
+        runs: npm ci --prefer=offline 
+      - name: List few modules
+        runs: ls -R node_modules | head  
+
+
+
+
+
+
   caching:
     name: Demo-caching
     runs-on: ubuntu-24.04
