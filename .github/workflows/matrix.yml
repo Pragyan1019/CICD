@@ -1,0 +1,24 @@
+name: Matrices 
+
+jobs:
+  name: Matrices execution
+  runs: ubuntu-latest
+  strategy:
+    fail-fast: false
+    matrix:
+      number: [1,2]
+      letter: [a,b,c]
+      - exclude:
+          number: 1
+          letter: c
+  
+    steps:
+      - name: First step
+        runs: |
+          echo "Number ${{ matrix.number }}" 
+          echo "Letter ${{ matrix.letter }}"
+
+      - name: Second step 
+        if: ${{ !(matrix.number == 1 && matrix.letter == 'b') }}
+        runs: echo "If condition executed: ${{ matrix.number }} ${{ matrix.letter }}"     
+   
