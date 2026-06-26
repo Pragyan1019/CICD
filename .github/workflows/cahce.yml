@@ -14,11 +14,11 @@ jobs:
       - uses: actions/checkout@130a169078a413d3a5246a393625e8e742f387f6
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
           cache-dependency-path: cache/node-project/package-lock.json
       - name: Install npm dependecies
-        run: npm ci --prefer=offline 
+        run: npm ci 
       - name: List few modules
         run: ls -R node_modules | head  
 
