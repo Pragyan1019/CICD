@@ -28,7 +28,7 @@ jobs:
 
       - name: Second step 
         if: ${{ !(matrix.number == 1 && matrix.letter == 'b') }}
-        run: echo "If condition executed: ${{ matrix.number }} ${{ matrix.letter }}" 
+        run: echo "condition executed for ${{ matrix.number }}${{ matrix.letter }}" 
 
   sleep-jobs:
     runs-on : ubuntu-24.04
