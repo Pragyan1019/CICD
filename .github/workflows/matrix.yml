@@ -1,5 +1,8 @@
 name: Matrices 
 
+on:
+  workflow-dispatch:
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
   cancel-in-progress: true
@@ -12,24 +15,26 @@ jobs:
       matrix:
         number: [1,2]
         letter: [a,b,c]
-        - exclude:
-            number: 1
+        exclude:
+          - number: 1
             letter: c
     timeout-minutes: 5     
   
     steps:
       - name: First step
-        runs: |
+        run: |
           echo "Number ${{ matrix.number }}" 
           echo "Letter ${{ matrix.letter }}"
 
       - name: Second step 
         if: ${{ !(matrix.number == 1 && matrix.letter == 'b') }}
-        runs: echo "If condition executed: ${{ matrix.number }} ${{ matrix.letter }}" 
+        run: echo "If condition executed: ${{ matrix.number }} ${{ matrix.letter }}" 
 
   sleep-jobs:
     runs-on : ubuntu-24.04
-    runs: sleep 100
+    steps:
+      - name: sleep
+        run: sleep 100
     timeout-minutes: 5
               
    
