@@ -1,0 +1,14 @@
+name: Composite function
+on:
+  workflow_dispatch:
+
+jobs:
+  runs-on: ubuntu-24.04
+  name: Using composite function
+  steps:
+    - uses: action/checkout@v4
+    - id: composite-instace
+      uses: ./actions/compositeaction1
+      with:
+        whowho: 'Culers'
+  
